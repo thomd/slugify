@@ -55,3 +55,8 @@ setup() {
     assert_output --partial 'Spaces Dashes-And_Underscores.txt -> spaces_dashes_and_underscores.txt'
 }
 
+@test "slugify combination of options" {
+    run ./slugify -n -ixca "Home - My l'il   Gadgets (4).MOV"
+    assert_output --partial "rename: Home - My l'il   Gadgets (4).MOV -> Home-My_lil_Gadgets_4.MOV"
+}
+

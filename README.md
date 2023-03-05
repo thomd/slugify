@@ -26,23 +26,23 @@
 
 ## Usage
 
-Rename *files*:
+Rename **files**:
 
     slugify My\ \ file.txt                               # my__file.txt
     slugify "My  file.txt"                               # my__file.txt
     slugify *.txt
     slugify "first file.txt" "second file.txt"
 
-Rename directories:
+Rename **directories**:
 
     slugify "My Directory"                               # my_directory
 
-Dry run with `-n` option:
+**Dry run** with `-n` option:
 
     slugify -n *
     slugify -n "Ghost File.txt"                          # ghost_file.txt
 
-Consolidate consecutive spaces into single spaces with `-c` option:
+Consolidate **multiple spaces** into **single space** with `-c` option:
 
     slugify -c "My    consolidated    file.txt"          # my_consolidated_file.txt
 
