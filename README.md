@@ -2,6 +2,15 @@
 
 Slugify is a bash command that converts filenames and directories to a web friendly format.
 
+## Install
+
+    git clone https://github.com/thomd/slugify.git
+    cd slugify
+    git submodule init
+    git submodule update
+    make test
+    make install
+
 ## Usage Help
 
 Simply enter the slugify command without any arguments or with the -h option to view the usage help.
@@ -19,6 +28,10 @@ Simply enter the slugify command without any arguments or with the -h option to 
        -v: verbose
 
 ## Usage Examples
+
+rename `My  file.txt` to `my__file.txt`:
+
+    slugify My\ \ file.txt
 
 Note, most examples below are run in verbose mode (-v) to help illustrate the results.
 
@@ -129,4 +142,5 @@ The -u treats underscores as spaces and -d converts spaces into dashes.
 
     $ slugify -vt "Spaces Dashes-And_Underscores.txt"
     rename: Spaces Dashes-And_Underscores.txt -> spaces_dashes_and_underscores.txt
+
 
