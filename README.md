@@ -25,6 +25,10 @@
     make test
     make install
 
+Set alias for your preferred configuration:
+
+    alias slug="slugify -xca $@"
+
 ## Usage
 
 Rename **files**:
