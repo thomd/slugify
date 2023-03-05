@@ -32,7 +32,7 @@ function print_usage(){
   echo "   -n: dry run"
   echo "   -t: treat existing dashes as spaces"
   echo "   -u: treat existing underscores as spaces (useful with -a, -c, or -d)"
-  echo "   -x: remove special character: ()'"
+  echo "   -x: remove special characters"
   echo "   -v: verbose"
 }
 
@@ -72,7 +72,7 @@ esac
 
 ## Notify if in dry_run mode
 if [ $dry_run -eq 1 ]; then
-  echo "--- Begin dry run mode."
+  echo "--- Begin dry run mode"
 fi
 
 ## For each file, directory, or glob
@@ -150,5 +150,5 @@ done
 
 ## Notify if in dry_run mode
 if [ $dry_run -eq 1 ]; then
-  echo "--- End dry run mode."
+  echo "--- End dry run mode"
 fi

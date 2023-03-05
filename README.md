@@ -3,7 +3,8 @@
 `slugify` is a bash command that converts filenames and directories to a web friendly format.
 
     > slugify
-    usage: slugify [-acdhintuv] source_file ...
+
+    usage: slugify [-acdhintuxv] source_file ...
        -a: remove spaces immediately adjacent to dashes
        -c: consolidate consecutive spaces into single space
        -d: replace spaces with dashes (instead of default underscores)
@@ -12,7 +13,7 @@
        -n: dry run
        -t: treat existing dashes as spaces
        -u: treat existing underscores as spaces (useful with -a, -c, or -d)
-       -x: remove special character: ()'
+       -x: remove special characters
        -v: verbose
 
 ## Install
