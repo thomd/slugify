@@ -15,10 +15,11 @@ ignore_case=0
 dry_run=0
 dashes_to_spaces=0
 underscores_to_spaces=0
+special_character=0
 verbose=0
 
 ## Initialize valid options
-opt_string=acdhintuv
+opt_string=acdhintuxv
 
 ## Usage function
 function print_usage(){
@@ -31,6 +32,7 @@ function print_usage(){
   echo "   -n: dry run"
   echo "   -t: treat existing dashes as spaces"
   echo "   -u: treat existing underscores as spaces (useful with -a, -c, or -d)"
+  echo "   -x: remove special character: ()'"
   echo "   -v: verbose"
 }
 
@@ -47,6 +49,7 @@ do
     t) dashes_to_spaces=1 ;;
     u) underscores_to_spaces=1 ;;
     v) verbose=1 ;;
+    x) special_character=1 ;;
     *) exit 1 ;;
   esac
 done
@@ -86,6 +89,11 @@ for source in "$@"; do
 
   ## Initialize target
   target="$source"
+
+  ## Optionally remove special characters
+  if [ $special_character -eq 1 ]; then
+    target=$(echo "$target" | iconv -f utf8 -t ascii//TRANSLIT | sed "s/'//g" | sed "s/(//g" | sed "s/)//g")
+  fi
 
   ## Optionally convert to lowercase
   if [ $ignore_case -eq 0 ]; then

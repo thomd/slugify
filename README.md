@@ -29,20 +29,20 @@ Simply enter the slugify command without any arguments or with the -h option to 
 
 ## Usage Examples
 
-Dry-run with `-n` option:
+Rename files:
 
-    slugify -n *
-
-Rename file `My  file.txt` to `my__file.txt`:
-
-    slugify My\ \ file.txt
-    slugify "My  file.txt"
+    slugify My\ \ file.txt                               # my__file.txt
+    slugify "My  file.txt"                               # my__file.txt
     slugify *.txt
     slugify "first file.txt" "second file.txt"
 
-Rename directory `My Directory` to `my_directory`:
+Rename directories:
 
-    slugify "My Directory"
+    slugify "My Directory"                               # my_directory
+
+Dry-run with `-n` option:
+
+    slugify -n *
 
 Consolidate consecutive spaces into single spaces with `-c` option:
 

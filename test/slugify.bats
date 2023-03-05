@@ -8,8 +8,15 @@ setup() {
 }
 
 @test "escape filenames" {
-    run ./slugify -n "My  File"
-    assert_output --partial 'rename: My  File -> my__file'
+    run ./slugify -n "My  File.txt"
+    assert_output --partial "rename: My  File.txt -> my__file.txt"
+}
+
+@test "remove special characters" {
+    run ./slugify -n -x "My F'ile.txt"
+    assert_output --partial "rename: My F'ile.txt -> my_file.txt"
+    run ./slugify -n -x "My File (1).txt"
+    assert_output --partial "rename: My File (1).txt -> my_file_1.txt"
 }
 
 @test "consolidate consecutive spaces into single spaces" {
