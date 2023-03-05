@@ -3,7 +3,7 @@ BINDIR = ${DESTDIR}/bin
 
 install:
 	install -d ${BINDIR}
-	install -m 755 bin/slugify ${BINDIR}
+	install -m 755 slugify ${BINDIR}
 
 uninstall:
 	rm -f ${BINDIR}/slugify
