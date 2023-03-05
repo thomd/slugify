@@ -9,7 +9,7 @@ uninstall:
 	rm -f ${BINDIR}/slugify
 
 test:
-	@bats test/slugify.bats
+	@./test/bats/bin/bats test/slugify.bats
 
 .PHONY: install uninstall test
 
