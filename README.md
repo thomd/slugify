@@ -1,6 +1,19 @@
-# Bash Command: Slugify
+# slugify
 
-Slugify is a bash command that converts filenames and directories to a web friendly format.
+`slugify` is a bash command that converts filenames and directories to a web friendly format.
+
+    > slugify
+    usage: slugify [-acdhintuv] source_file ...
+       -a: remove spaces immediately adjacent to dashes
+       -c: consolidate consecutive spaces into single space
+       -d: replace spaces with dashes (instead of default underscores)
+       -h: help
+       -i: ignore case
+       -n: dry run
+       -t: treat existing dashes as spaces
+       -u: treat existing underscores as spaces (useful with -a, -c, or -d)
+       -x: remove special character: ()'
+       -v: verbose
 
 ## Install
 
@@ -11,25 +24,9 @@ Slugify is a bash command that converts filenames and directories to a web frien
     make test
     make install
 
-## Usage Help
+## Usage
 
-Simply enter the slugify command without any arguments or with the -h option to view the usage help.
-
-    $ slugify
-    usage: slugify [-acdhintuv] source_file ...
-       -a: remove spaces immediately adjacent to dashes
-       -c: consolidate consecutive spaces into single space
-       -d: replace spaces with dashes (instead of default underscores)
-       -h: help
-       -i: ignore case
-       -n: dry run
-       -t: treat existing dashes as spaces
-       -u: treat existing underscores as spaces (useful with -a, -c, or -d)
-       -v: verbose
-
-## Usage Examples
-
-Rename files:
+Rename *files*:
 
     slugify My\ \ file.txt                               # my__file.txt
     slugify "My  file.txt"                               # my__file.txt
