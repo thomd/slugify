@@ -29,45 +29,24 @@ Simply enter the slugify command without any arguments or with the -h option to 
 
 ## Usage Examples
 
-rename `My  file.txt` to `my__file.txt`:
+Dry-run with `-n` option:
+
+    slugify -n *
+
+Rename file `My  file.txt` to `my__file.txt`:
 
     slugify My\ \ file.txt
+    slugify "My  file.txt"
+    slugify *.txt
+    slugify "first file.txt" "second file.txt"
 
-Note, most examples below are run in verbose mode (-v) to help illustrate the results.
+Rename directory `My Directory` to `my_directory`:
 
-Verbose mode is unnecessary in real world scenarios.
+    slugify "My Directory"
 
-#### Provide escaped filenames:
+Consolidate consecutive spaces into single spaces with `-c` option:
 
-    $ slugify -v My\ \ file.txt
-    rename: My  file.txt -> my__file.txt
-
-#### Alternatively provide unescaped filenames inside quotes:
-
-    $ slugify -v "My  file.txt"
-    rename: My  file.txt -> my__file.txt
-
-#### Globs (like * and ?) work as well:
-
-    $ slugify -v *.txt
-    rename: My file.txt -> my_file.txt
-    ignore: my_web_friendly_filename.txt
-
-#### Provide an unlimited number of arguments:
-
-    $ slugify -v "My first file.txt" "My second file.txt"
-    rename: My first file.txt -> my_first_file.txt
-    rename: My second file.txt -> my_second_file.txt
-
-#### Directories are also supported:
-
-    $ slugify -v "My Directory"
-    rename: My Directory -> my_directory
-
-#### Consolidate consecutive spaces into single spaces:
-
-    $ slugify -vc "My    consolidated    file.txt"
-    rename: My    consolidated    file.txt -> my_consolidated_file.txt
+    slugify -c "My    consolidated    file.txt"          # my_consolidated_file.txt
 
 #### Replace spaces with dashes:
 
