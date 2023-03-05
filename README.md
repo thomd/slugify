@@ -40,86 +40,42 @@ Rename directories:
 
     slugify "My Directory"                               # my_directory
 
-Dry-run with `-n` option:
+Dry run with `-n` option:
 
     slugify -n *
+    slugify -n "Ghost File.txt"                          # ghost_file.txt
 
 Consolidate consecutive spaces into single spaces with `-c` option:
 
     slugify -c "My    consolidated    file.txt"          # my_consolidated_file.txt
 
-#### Replace spaces with dashes:
+Replace spaces with dashes with `-d` option:
 
-    $ slugify -vd "My dashed file.txt"
-    rename: My dashed file.txt -> my-dashed-file.txt
+    slugify -d "My dashed file.txt"                      # my-dashed-file.txt
+    slugify -d "My  dashed  file.txt"                    # my--dashed--file.txt
+    slugify -dc "My  dashed  file.txt"                   # my-dashed-file.txt
 
-The -d option replaces each space with a dash.
+Ignore case with `-i` option:
 
-    $ slugify -vd "My  dashed  file.txt"
-    rename: My  dashed  file.txt -> my--dashed--file.txt
+    slugify -i "UPPER CASE FILE.txt"                     # UPPER_CASE_FILE.txt
 
-Combine -d with -c (consolidate spaces) for a single dash between each word.
+Remove special characters `'`, `(` or `)` with `-x` option:
 
-    $ slugify -vdc "My  dashed  file.txt"
-    rename: My  dashed  file.txt -> my-dashed-file.txt
+    slugify -x "My Files (1).txt"                        # my_files_1.txt
 
-#### Ignore case:
+Handle spaces adjacent to dashes with `-a` option:
 
-    $ slugify -vi "UPPER CASE FILE.txt"
-    rename: UPPER CASE FILE.txt -> UPPER_CASE_FILE.txt
+    slugify "Beatles - Yellow Submarine.mp3"             # beatles_-_yellow_submarine.mp3
+    slugify -a "Beatles - Yellow Submarine.mp3"          # beatles-yellow_submarine.mp3
 
-#### Play it safe with a dry run:
+    slugify -a "Beatles  -  Yellow Submarine.mp3"        # beatles__-__yellow_submarine.mp3
+    slugify -ac "Beatles  -  Yellow Submarine.mp3"       # beatles-yellow_submarine.mp3
 
-Dry run mode does not alter the filesystem in any way.
+Convert underscores into dashes with `-u` option:
 
-    $ slugify -n *
-    --- Begin dry run mode.
-    rename: My file.txt -> my_file.txt
-    ignore: web_friendly_filename.txt
-    --- End dry run mode.
+    slugify -ud "Spaces Dashes-And_Underscores.txt"      # spaces-dashes-and-underscores.txt
 
-Dry run mode also allows you to test filenames that don't exist. Great for testing!
+Convert dashes into underscores with `-t` option:
 
-    $ slugify -n "Ghost File.txt"
-    --- Begin dry run mode.
-    not found: Ghost File.txt
-    rename: Ghost File.txt -> ghost_file.txt
-    --- End dry run mode.
-
-Dry run mode automatically enables verbose mode so there is no need to include the -v option with -n.
-
-#### Handle spaces adjacent to dashes:
-
-In this example, without -a the dashes end up surrounded by underscores.
-
-    $ slugify -v "The Beatles - Yellow Submarine.mp3"
-    rename: The Beatles - Yellow Submarine.mp3 -> the_beatles_-_yellow_submarine.mp3
-
-But with -a the adjacent spaces are removed.
-
-    $ slugify -va "The Beatles - Yellow Submarine.mp3"
-    rename: The Beatles - Yellow Submarine.mp3 -> the_beatles-yellow_submarine.mp3
-
-The -a only removes spaces immediately adjacent to a dash, which may not be the desired effect (below three spaces on either side of the dash get converted into two underscores because of -a).
-
-    $ slugify -va "The Beatles   -   Yellow Submarine.mp3"
-    rename: The Beatles   -   Yellow Submarine.mp3 -> the_beatles__-__yellow_submarine.mp3
-
-But -c consolidates spaces into a single space and then -a will remove the left over adjacent single spaces.
-
-    $ slugify -vac "The Beatles   -   Yellow Submarine.mp3"
-    rename: The Beatles - Yellow Submarine.mp3 -> the_beatles-yellow_submarine.mp3
-
-#### Convert existing underscores into dashes
-
-The -u treats underscores as spaces and -d converts spaces into dashes.
-
-    $ slugify -vud "Spaces Dashes-And_Underscores.txt"
-    rename: Spaces Dashes-And_Underscores.txt -> spaces-dashes-and-underscores.txt
-
-#### Convert existing dashes into underscores
-
-    $ slugify -vt "Spaces Dashes-And_Underscores.txt"
-    rename: Spaces Dashes-And_Underscores.txt -> spaces_dashes_and_underscores.txt
-
+    slugify -t "Spaces Dashes-And_Underscores.txt"       # spaces_dashes_and_underscores.txt
 
