@@ -25,7 +25,7 @@
     make test
     make install
 
-Set alias for your preferred configuration:
+You may set an **alias** for your preferred configuration, e.g.:
 
     alias slug="slugify -xca $@"
 
