@@ -16,6 +16,13 @@
        -x: remove special characters: ',()[]
        -v: verbose
 
+## Why?
+
+MacOS is **not case-sensitive**, meaning `File.txt` and `file.txt` are the **same name**. However some servers are case sensitive so problems can arise if the file
+is used for a website. So, always avoid having filenames differentiated only by capitalisation.
+
+Regarding **spaces**, they are not allowed in a URL and should also be avoided.
+
 ## Install
 
     git clone https://github.com/thomd/slugify.git
