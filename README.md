@@ -13,7 +13,7 @@
        -n: dry run
        -t: treat existing dashes as spaces
        -u: treat existing underscores as spaces (useful with -a, -c, or -d)
-       -x: remove special characters
+       -x: remove special characters: ',()[]
        -v: verbose
 
 ## Install

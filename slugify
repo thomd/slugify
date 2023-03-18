@@ -32,7 +32,7 @@ function print_usage(){
   echo "   -n: dry run"
   echo "   -t: treat existing dashes as spaces"
   echo "   -u: treat existing underscores as spaces (useful with -a, -c, or -d)"
-  echo "   -x: remove special characters"
+  echo "   -x: remove special characters: ',()[]"
   echo "   -v: verbose"
 }
 
@@ -92,7 +92,7 @@ for source in "$@"; do
 
   ## Optionally remove special characters
   if [ $special_character -eq 1 ]; then
-    target=$(echo "$target" | iconv -f utf8 -t ascii//TRANSLIT | sed "s/'//g" | sed "s/(//g" | sed "s/)//g")
+    target=$(echo "$target" | iconv -f utf8 -t ascii//TRANSLIT | sed "s/'//g" | sed "s/(//g" | sed "s/)//g" | sed "s/\[//g" | sed "s/\]//g" | sed "s/,//g")
   fi
 
   ## Optionally convert to lowercase
