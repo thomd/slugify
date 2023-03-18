@@ -70,7 +70,7 @@ Ignore case with `-i` option:
 
     slugify -i "UPPER CASE FILE.txt"                     # UPPER_CASE_FILE.txt
 
-Remove special characters `'`, `(` or `)` with `-x` option:
+Remove special characters `'`, `,`, `(`, `)`, `[` or `]`  with `-x` option:
 
     slugify -x "My Files (1).txt"                        # my_files_1.txt
 
